@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.admin {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 240px;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, var(--color-primary-deep) 0%, #263b31 100%);
+  color: var(--color-bg);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+nav a {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--color-secondary-soft);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(214, 195, 165, 0.16);
+  color: #fff;
+}
+
+nav a.active {
+  background: var(--color-secondary);
+  color: var(--color-primary-deep);
+  font-weight: 700;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+}

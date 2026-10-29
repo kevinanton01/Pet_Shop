@@ -1,0 +1,6 @@
+- Layout: navbar, footer, sidebar (admin), breadcrumbs
+- Productos: product-card, product-grid, product-detail, product-form (admin), category-filter, search-bar, pagination
+- Carrito: cart-item, cart-summary, cart-drawer, quantity-selector
+- Formularios/Auth: login-form, register-form, input-field, password-input
+- UI común: modal, confirm-dialog, toast/notification, loading-spinner, empty-state, button, badge
+- Pedidos: order-card, order-table, order-status
