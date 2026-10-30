@@ -1,1 +1,119 @@
-<h1>Estamos en la página de Tienda</h1>
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">
+      <svg class="heart" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+      <span>Sencillo, sano y delicioso</span>
+    </p>
+    <h1 class="slogan">
+      Su mejor vida<br />
+      empieza en el<br />
+      <span class="plato">
+        Plato
+        <svg class="plato-line" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 14 C 50 4, 150 4, 196 14" fill="none" stroke="#d9873f" stroke-width="6" stroke-linecap="round" />
+        </svg>
+      </span>
+    </h1>
+    <p class="info">
+      Recetas honestas con ingredientes que reconoces, creadas para cuidarles por dentro y verlos brillar por fuera.
+    </p>
+    <a class="cta" routerLink="/tienda/inicio">Explorar la tienda</a>
+  </div>
+
+  <div class="hero-photo">
+    <img src="assets/mascota.jpg" alt="Perro feliz de la tienda Patitas" />
+  </div>
+</section>
+
+<section class="benefits">
+  <article class="benefit-card">
+    <span class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="1" y="3" width="15" height="13" />
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+    </span>
+    <h2 class="benefit-title">Envíos a todo el país</h2>
+  </article>
+
+  <article class="benefit-card">
+    <span class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 9l1-5h16l1 5" />
+        <path d="M4 9v11h16V9" />
+        <path d="M9 20v-6h6v6" />
+      </svg>
+    </span>
+    <h2 class="benefit-title">Retiro en el local</h2>
+  </article>
+
+  <article class="benefit-card">
+    <span class="benefit-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    </span>
+    <h2 class="benefit-title">Punto de encuentro</h2>
+  </article>
+</section>
+
+<section class="shop-for">
+  <div class="section-head">
+    <h2 class="section-title">¿Para quién estás comprando?</h2>
+  </div>
+
+  <div class="categories">
+    <app-card-categorias nombre="Perros" tipo="perros" />
+    <app-card-categorias nombre="Gatos" tipo="gatos" />
+    <app-card-categorias nombre="Aves" tipo="aves" />
+    <app-card-categorias nombre="Otros" tipo="otros" />
+  </div>
+
+  <a class="all-products" routerLink="/tienda/inicio">
+    <span class="all-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    </span>
+    <span class="all-text">
+      <strong>Ver todos los productos</strong>
+      <small>Explorá el catálogo completo en un solo lugar</small>
+    </span>
+    <span class="all-arrow" aria-hidden="true">→</span>
+  </a>
+</section>
+
+<section class="best-sellers">
+  <h2 class="section-title">Más vendidos</h2>
+  <div class="products-grid">
+    @for (producto of masVendidos; track producto.nombre) {
+      <app-card-alimento
+        [nombre]="producto.nombre"
+        [precio]="producto.precio"
+        [imagen]="producto.imagen"
+        [descripcion]="producto.descripcion"
+        [categoria]="producto.categoria"
+      />
+    }
+  </div>
+</section>
+
+<section class="brands">
+  <h2 class="section-title">Nuestras marcas</h2>
+  <div class="brands-grid">
+    <div class="brand-card">Pedigree</div>
+    <div class="brand-card">Purina ProPlan</div>
+    <div class="brand-card">Purina Excellent</div>
+    <div class="brand-card">Royal Canin</div>
+    <div class="brand-card">Old Prince</div>
+    <div class="brand-card">Whiskas</div>
+  </div>
+</section>
