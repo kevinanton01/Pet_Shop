@@ -1,0 +1,103 @@
+.contacto {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.titulo {
+  position: relative;
+  margin: 0 0 1rem;
+  padding-bottom: 0.6rem;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+}
+
+.titulo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 4px;
+  border-radius: 4px;
+  background: #d9873f;
+}
+
+.intro {
+  max-width: 60ch;
+  margin: 0 0 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.dato-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.dato-card:hover {
+  transform: translateY(-3px);
+  border-color: #d9873f;
+}
+
+.dato-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f7e3cf;
+  color: #d9873f;
+}
+
+.dato-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dato-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.dato-card a {
+  color: var(--color-primary-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dato-card a:hover {
+  color: #d9873f;
+}
+
+@media (max-width: 1000px) {
+  .datos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .contacto {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .datos {
+    grid-template-columns: 1fr;
+  }
+}
