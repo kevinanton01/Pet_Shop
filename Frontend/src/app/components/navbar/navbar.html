@@ -13,9 +13,24 @@
   </a>
 
   <nav class="links">
-    <a routerLink="/tienda/inicio">Alimentos</a>
-    <a routerLink="/tienda/inicio">Juguetes</a>
-    <a routerLink="/tienda/inicio">Ropa</a>
+    <div class="nav-item">
+      <a routerLink="/tienda/inicio" aria-haspopup="true">
+        Productos
+        <span class="caret" aria-hidden="true"></span>
+      </a>
+      <ul class="submenu">
+        <li><a routerLink="/tienda/inicio">Alimentos</a></li>
+        <li><a routerLink="/tienda/inicio">Juguetes</a></li>
+        <li><a routerLink="/tienda/inicio">Ropa</a></li>
+        <li><a routerLink="/tienda/inicio">Accesorios</a></li>
+      </ul>
+    </div>
+
+    <a routerLink="/tienda/inicio">Quiénes Somos</a>
+
+    <a routerLink="/tienda/inicio">Contacto</a>
+
+    <a routerLink="/tienda/inicio">Preguntas Frecuentes</a>
   </nav>
 
   <div class="actions">
@@ -28,12 +43,20 @@
 
     <a routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
 
-    <a class="cart" routerLink="/tienda/carrito" routerLinkActive="active" aria-label="Carrito">
+    <button
+      class="cart"
+      type="button"
+      aria-label="Abrir vista previa del carrito"
+      [attr.aria-expanded]="carritoAbierto()"
+      (click)="alternarCarrito()"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1" />
         <circle cx="20" cy="21" r="1" />
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
       </svg>
-    </a>
+    </button>
   </div>
 </header>
+
+<app-carrito-vista-previa [abierto]="carritoAbierto()" (cerrar)="cerrarCarrito()" />

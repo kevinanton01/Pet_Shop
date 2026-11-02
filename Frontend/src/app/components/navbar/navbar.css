@@ -68,11 +68,18 @@
   color: #1f5c39;
 }
 
-.links a {
+.nav-item {
   position: relative;
 }
 
-.links a::after {
+.links > .nav-item > a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.links > .nav-item > a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -85,8 +92,72 @@
   transition: transform 0.2s ease;
 }
 
-.links a:hover::after {
+.links > .nav-item > a:hover::after {
   transform: scaleX(1);
+}
+
+.caret {
+  width: 0.42em;
+  height: 0.42em;
+  margin-top: -0.15em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover .caret,
+.nav-item:focus-within .caret {
+  transform: rotate(225deg);
+}
+
+.submenu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  z-index: 30;
+  min-width: 190px;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 28px rgba(52, 78, 65, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.submenu::before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
+}
+
+.nav-item:hover .submenu,
+.nav-item:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar .submenu a {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar .submenu a:hover {
+  background: #f7e3cf;
+  color: #1f5c39;
 }
 
 .icon,
@@ -128,5 +199,20 @@
 
   .logo .brand {
     font-size: 1.5rem;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .submenu {
+    left: 50%;
+    transform: translate(-50%, 8px);
+  }
+
+  .nav-item:hover .submenu,
+  .nav-item:focus-within .submenu {
+    transform: translate(-50%, 0);
   }
 }
