@@ -1,7 +1,12 @@
-.navbar {
+:host {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 20;
+}
+
+.navbar {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -72,14 +77,14 @@
   position: relative;
 }
 
-.links > .nav-item > a {
+.links>.nav-item>a {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-.links > .nav-item > a::after {
+.links>.nav-item>a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -92,7 +97,7 @@
   transition: transform 0.2s ease;
 }
 
-.links > .nav-item > a:hover::after {
+.links>.nav-item>a:hover::after {
   transform: scaleX(1);
 }
 

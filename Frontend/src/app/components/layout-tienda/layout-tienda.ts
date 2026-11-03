@@ -9,4 +9,4 @@ import { Footer } from '../footer/footer';
   templateUrl: './layout-tienda.html',
   styleUrl: './layout-tienda.css',
 })
-export class LayoutTienda {}
+export class LayoutTienda { }

@@ -1,12 +1,14 @@
 <header class="navbar">
   <a class="logo" routerLink="/tienda/inicio" aria-label="Patitas">
     <span class="logo-badge">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+        aria-hidden="true">
         <ellipse cx="5.5" cy="11" rx="2" ry="2.4" />
         <ellipse cx="9.5" cy="7" rx="2" ry="2.4" />
         <ellipse cx="14.5" cy="7" rx="2" ry="2.4" />
         <ellipse cx="18.5" cy="11" rx="2" ry="2.4" />
-        <path d="M12 11.5c-2.6 0-4.8 2.3-4.8 4.8 0 1.9 1.6 3.2 3.5 3.2.7 0 1.2-.3 1.3-.3s.6.3 1.3.3c1.9 0 3.5-1.3 3.5-3.2 0-2.5-2.2-4.8-4.8-4.8z" />
+        <path
+          d="M12 11.5c-2.6 0-4.8 2.3-4.8 4.8 0 1.9 1.6 3.2 3.5 3.2.7 0 1.2-.3 1.3-.3s.6.3 1.3.3c1.9 0 3.5-1.3 3.5-3.2 0-2.5-2.2-4.8-4.8-4.8z" />
       </svg>
     </span>
     <span class="brand">Patitas</span>
@@ -14,15 +16,34 @@
 
   <nav class="links">
     <div class="nav-item">
-      <a routerLink="/tienda/inicio" aria-haspopup="true">
+      <a routerLink="/tienda/productos" aria-haspopup="true">
         Productos
         <span class="caret" aria-hidden="true"></span>
       </a>
       <ul class="submenu">
-        <li><a routerLink="/tienda/inicio">Alimentos</a></li>
-        <li><a routerLink="/tienda/inicio">Juguetes</a></li>
-        <li><a routerLink="/tienda/inicio">Ropa</a></li>
-        <li><a routerLink="/tienda/inicio">Accesorios</a></li>
+        <li>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'alimentos' }">
+            Alimentos
+          </a>
+        </li>
+        <li>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'juguetes' }">
+            Juguetes
+          </a>
+        </li>
+        <li>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'ropa' }">Ropa</a>
+        </li>
+        <li>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'accesorios' }">
+            Accesorios
+          </a>
+        </li>
+        <li>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'higiene' }">
+            Higiene
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -35,7 +56,8 @@
 
   <div class="actions">
     <button class="icon" type="button" aria-label="Buscar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="7" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
@@ -43,14 +65,10 @@
 
     <a routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
 
-    <button
-      class="cart"
-      type="button"
-      aria-label="Abrir vista previa del carrito"
-      [attr.aria-expanded]="carritoAbierto()"
-      (click)="alternarCarrito()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button class="cart" type="button" aria-label="Abrir vista previa del carrito"
+      [attr.aria-expanded]="carritoAbierto()" (click)="alternarCarrito()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1" />
         <circle cx="20" cy="21" r="1" />
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />

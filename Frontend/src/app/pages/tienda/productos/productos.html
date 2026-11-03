@@ -1,0 +1,97 @@
+<section class="productos">
+  <aside class="filtros" aria-labelledby="titulo-categorias">
+    <h2 id="titulo-categorias" class="filtros-titulo">Categoría</h2>
+
+    <div class="grupo">
+      <label class="opcion opcion-padre">
+        <input type="checkbox" name="categoria" value="alimentos" [checked]="estaSeleccionada('alimentos')"
+          (change)="alternar('alimentos', $event)" />
+        Alimentos
+      </label>
+
+      <div class="subcategorias">
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="perros" [checked]="estaSeleccionada('perros')"
+            (change)="alternar('perros', $event)" />
+          Perros
+        </label>
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="gatos" [checked]="estaSeleccionada('gatos')"
+            (change)="alternar('gatos', $event)" />
+          Gatos
+        </label>
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="aves" [checked]="estaSeleccionada('aves')"
+            (change)="alternar('aves', $event)" />
+          Aves
+        </label>
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="otros" [checked]="estaSeleccionada('otros')"
+            (change)="alternar('otros', $event)" />
+          Otros
+        </label>
+      </div>
+    </div>
+
+    <div class="grupo">
+      <label class="opcion opcion-padre">
+        <input type="checkbox" name="categoria" value="juguetes" [checked]="estaSeleccionada('juguetes')"
+          (change)="alternar('juguetes', $event)" />
+        Juguetes
+      </label>
+    </div>
+
+    <div class="grupo">
+      <label class="opcion opcion-padre">
+        <input type="checkbox" name="categoria" value="ropa" [checked]="estaSeleccionada('ropa')"
+          (change)="alternar('ropa', $event)" />
+        Ropa
+      </label>
+    </div>
+
+    <div class="grupo">
+      <label class="opcion opcion-padre">
+        <input type="checkbox" name="categoria" value="accesorios" [checked]="estaSeleccionada('accesorios')"
+          (change)="alternar('accesorios', $event)" />
+        Accesorios
+      </label>
+    </div>
+
+    <div class="grupo">
+      <label class="opcion opcion-padre">
+        <input type="checkbox" name="categoria" value="higiene" [checked]="estaSeleccionada('higiene')"
+          (change)="alternar('higiene', $event)" />
+        Higiene
+      </label>
+
+      <div class="subcategorias">
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="shampoo" [checked]="estaSeleccionada('shampoo')"
+            (change)="alternar('shampoo', $event)" />
+          Shampoo
+        </label>
+        <label class="opcion opcion-hijo">
+          <input type="checkbox" name="categoria" value="perfumes" [checked]="estaSeleccionada('perfumes')"
+            (change)="alternar('perfumes', $event)" />
+          Perfumes
+        </label>
+      </div>
+    </div>
+  </aside>
+
+  <div class="catalogo">
+    <div class="products-grid">
+      @for (producto of productosFiltrados(); track producto.nombre) {
+        <app-card-alimento
+          [nombre]="producto.nombre"
+          [precio]="producto.precio"
+          [imagen]="producto.imagen"
+          [descripcion]="producto.descripcion"
+          [categoria]="producto.categoria"
+        />
+      } @empty {
+        <p class="sin-resultados">No hay productos para las categorías seleccionadas.</p>
+      }
+    </div>
+  </div>
+</section>
