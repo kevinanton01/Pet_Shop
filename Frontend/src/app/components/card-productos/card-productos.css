@@ -53,6 +53,19 @@
   letter-spacing: 0.03em;
 }
 
+.card-descuento {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #2f7d4f;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;

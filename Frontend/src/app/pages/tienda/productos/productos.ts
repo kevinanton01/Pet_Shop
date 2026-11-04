@@ -2,12 +2,12 @@ import { Component, computed, inject, linkedSignal, signal } from '@angular/core
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { CardAlimento } from '../../../components/card-alimento/card-alimento';
+import { CardProductos } from '../../../components/card-productos/card-productos';
 import { Producto, ProductosService } from '../../../core/services/productos.service';
 
 @Component({
   selector: 'app-productos',
-  imports: [CardAlimento],
+  imports: [CardProductos],
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })

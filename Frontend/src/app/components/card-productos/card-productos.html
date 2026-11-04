@@ -2,6 +2,9 @@
   <div class="card-media">
     <img [src]="imagen()" [alt]="nombre()" loading="lazy" />
     <span class="card-badge">{{ categoria() }}</span>
+    @if (descuento()) {
+    <span class="card-descuento">{{ descuento() }}% OFF</span>
+    }
   </div>
 
   <div class="card-body">

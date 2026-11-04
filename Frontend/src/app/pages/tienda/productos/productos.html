@@ -87,12 +87,13 @@
 
     <div class="products-grid">
       @for (producto of productosFiltrados(); track producto.nombre) {
-        <app-card-alimento
+        <app-card-productos
           [nombre]="producto.nombre"
           [precio]="producto.precio"
           [imagen]="producto.imagen"
           [descripcion]="producto.descripcion"
           [categoria]="producto.categoria"
+          [descuento]="producto.descuento"
           (verDetalle)="verDetalle(producto)"
         />
       } @empty {
