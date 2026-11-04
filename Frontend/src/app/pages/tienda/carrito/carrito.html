@@ -1,1 +1,100 @@
-<h1>Estamos en la página de Carrito</h1>
+<section class="carrito">
+  <h1 class="titulo">Mi Carrito</h1>
+
+  <div class="carrito-grid">
+    <div class="carrito-principal">
+      <div class="items">
+        <div class="items-header">
+          <span>Producto</span>
+          <span>Cantidad</span>
+          <span>Total</span>
+        </div>
+
+        @for (item of items(); track item.producto.nombre) {
+        <div class="item">
+          <div class="item-producto">
+            <img [src]="item.producto.imagen" [alt]="item.producto.nombre" loading="lazy" />
+            <div class="item-datos">
+              <strong>{{ item.producto.nombre }}</strong>
+              <small>{{ formatearPrecio(item.producto.precio) }}</small>
+            </div>
+          </div>
+
+          <div class="stepper">
+            <button type="button" class="stepper-btn" aria-label="Restar cantidad"
+              [disabled]="item.cantidad === 1" (click)="restar(item.producto.nombre)">−</button>
+            <span class="stepper-valor">{{ item.cantidad }}</span>
+            <button type="button" class="stepper-btn" aria-label="Sumar cantidad"
+              (click)="sumar(item.producto.nombre)">+</button>
+          </div>
+
+          <span class="item-total">
+            {{ formatearPrecio(item.producto.precio * item.cantidad) }}
+          </span>
+        </div>
+        } @empty {
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+        }
+      </div>
+
+      <div class="entrega">
+        <h2>Entrega</h2>
+
+        <div class="opciones-entrega">
+          <label class="opcion-entrega">
+            <input type="radio" name="entrega" value="domicilio" [checked]="entrega() === 'domicilio'"
+              (change)="cambiarEntrega('domicilio')" />
+            Envío a domicilio
+          </label>
+
+          <label class="opcion-entrega">
+            <input type="radio" name="entrega" value="retiro" [checked]="entrega() === 'retiro'"
+              (change)="cambiarEntrega('retiro')" />
+            Retiro en el local
+          </label>
+
+          <label class="opcion-entrega">
+            <input type="radio" name="entrega" value="punto" [checked]="entrega() === 'punto'"
+              (change)="cambiarEntrega('punto')" />
+            Punto de encuentro
+          </label>
+        </div>
+
+        @if (entrega() === 'punto') {
+        <div class="puntos">
+          <h3>Elegí un punto de encuentro</h3>
+          <ul class="puntos-lista">
+            @for (punto of puntosEncuentro; track punto.nombre) {
+            <li class="punto" [class.seleccionado]="puntoSeleccionado()?.nombre === punto.nombre">
+              <label class="punto-label">
+                <input type="radio" name="punto-encuentro"
+                  [checked]="puntoSeleccionado()?.nombre === punto.nombre" (change)="seleccionarPunto(punto)" />
+                <span class="punto-datos">
+                  <strong>{{ punto.nombre }}</strong>
+                  <small>{{ punto.direccion }}</small>
+                </span>
+              </label>
+            </li>
+            }
+          </ul>
+        </div>
+        }
+      </div>
+    </div>
+
+    <aside class="resumen">
+      <div class="total-fila">
+        <span>TOTAL</span>
+        <strong>{{ formatearPrecio(total()) }}</strong>
+      </div>
+
+      <div class="nota">
+        <label for="nota-pedido">Nota del pedido</label>
+        <textarea id="nota-pedido" rows="4" placeholder="Agregá una aclaración para tu pedido..."
+          [value]="nota()" (input)="actualizarNota($event)"></textarea>
+      </div>
+
+      <button type="button" class="finalizar">Finalizar compra</button>
+    </aside>
+  </div>
+</section>
