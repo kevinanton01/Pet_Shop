@@ -256,21 +256,20 @@
   justify-content: center;
   min-height: 96px;
   padding: 1rem;
-  text-align: center;
-  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
   box-shadow: var(--shadow-sm);
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1f4a34;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .brand-card:hover {
   transform: translateY(-3px);
-  border-color: #d9873f;
+}
+
+.brand-card img {
+  max-width: 100%;
+  max-height: 65px;
+  object-fit: contain;
 }
 
 @media (max-width: 1100px) {
