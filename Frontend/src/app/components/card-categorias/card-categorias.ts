@@ -12,5 +12,5 @@ type CategoriaTipo = 'perros' | 'gatos' | 'aves' | 'otros';
 export class CardCategorias {
   readonly nombre = input.required<string>();
   readonly tipo = input<CategoriaTipo>('otros');
-  readonly ruta = input<string>('/tienda/inicio');
+  readonly ruta = input<string>('/tienda/productos');
 }

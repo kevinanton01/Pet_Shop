@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LayoutAdmin } from './components/layout-admin/layout-admin';
-import { LayoutTienda } from './components/layout-tienda/layout-tienda';
+import { LayoutAdmin } from './layouts/layout-admin/layout-admin';
+import { LayoutTienda } from './layouts/layout-tienda/layout-tienda';
 
 export const routes: Routes = [
   {
