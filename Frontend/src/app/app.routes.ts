@@ -19,6 +19,13 @@ export const routes: Routes = [
           import('./pages/tienda/productos/productos').then((m) => m.Productos),
       },
       {
+        path: 'tienda/descripcion-producto/:nombre',
+        loadComponent: () =>
+          import('./pages/tienda/descripcion-producto/descripcion-producto').then(
+            (m) => m.DescripcionProducto,
+          ),
+      },
+      {
         path: 'tienda/carrito',
         loadComponent: () => import('./pages/tienda/carrito/carrito').then((m) => m.Carrito),
       },

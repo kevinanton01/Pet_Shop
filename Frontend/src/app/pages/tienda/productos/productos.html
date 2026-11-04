@@ -88,6 +88,7 @@
           [imagen]="producto.imagen"
           [descripcion]="producto.descripcion"
           [categoria]="producto.categoria"
+          (verDetalle)="verDetalle(producto)"
         />
       } @empty {
         <p class="sin-resultados">No hay productos para las categorías seleccionadas.</p>

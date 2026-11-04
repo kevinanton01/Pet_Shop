@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CardAlimento } from '../../../components/card-alimento/card-alimento';
 import { CardCategorias } from '../../../components/card-categorias/card-categorias';
 
@@ -12,11 +13,13 @@ interface Alimento {
 
 @Component({
   selector: 'app-inicio',
-  imports: [CardAlimento, CardCategorias],
+  imports: [CardAlimento, CardCategorias, RouterLink],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })
 export class Inicio {
+  private readonly router = inject(Router);
+
   readonly masVendidos: Alimento[] = [
     {
       nombre: 'Croquetas Premium',
@@ -54,4 +57,8 @@ export class Inicio {
       categoria: 'Perros',
     },
   ];
+
+  verDetalle(producto: Alimento): void {
+    this.router.navigate(['/tienda/descripcion-producto', producto.nombre]);
+  }
 }

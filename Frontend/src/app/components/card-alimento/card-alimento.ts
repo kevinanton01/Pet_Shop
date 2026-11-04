@@ -13,4 +13,5 @@ export class CardAlimento {
   readonly categoria = input<string>('Alimento');
 
   readonly agregar = output<void>();
+  readonly verDetalle = output<void>();
 }

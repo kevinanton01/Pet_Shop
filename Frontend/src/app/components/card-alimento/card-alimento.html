@@ -1,4 +1,4 @@
-<article class="card">
+<article class="card" role="link" tabindex="0" (click)="verDetalle.emit()" (keydown.enter)="verDetalle.emit()">
   <div class="card-media">
     <img [src]="imagen()" [alt]="nombre()" loading="lazy" />
     <span class="card-badge">{{ categoria() }}</span>
@@ -13,7 +13,7 @@
 
     <div class="card-footer">
       <span class="card-price">${{ precio() }}</span>
-      <button type="button" class="card-btn" (click)="agregar.emit()">Agregar</button>
+      <button type="button" class="card-btn" (click)="$event.stopPropagation(); agregar.emit()">Agregar</button>
     </div>
   </div>
 </article>

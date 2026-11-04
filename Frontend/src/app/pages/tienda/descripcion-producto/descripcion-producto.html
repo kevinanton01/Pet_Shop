@@ -1,0 +1,26 @@
+<section class="detalle">
+  <a class="volver" routerLink="/tienda/productos">← Volver a productos</a>
+
+  @if (producto(); as producto) {
+  <article class="detalle-card">
+    <div class="detalle-media">
+      <img [src]="producto.imagen" [alt]="producto.nombre" />
+      <span class="detalle-badge">{{ producto.categoria }}</span>
+    </div>
+
+    <div class="detalle-info">
+      <h1 class="detalle-titulo">{{ producto.nombre }}</h1>
+      <p class="detalle-precio">{{ formatearPrecio(producto.precio) }}</p>
+      <p class="detalle-descripcion">{{ producto.descripcion }}</p>
+
+      <button type="button" class="detalle-btn">Agregar al carrito</button>
+    </div>
+  </article>
+  } @else {
+  <div class="no-encontrado">
+    <h1>Producto no encontrado</h1>
+    <p>El producto que buscás no está disponible.</p>
+    <a class="volver" routerLink="/tienda/productos">Ver todos los productos</a>
+  </div>
+  }
+</section>

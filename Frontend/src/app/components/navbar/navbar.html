@@ -15,32 +15,33 @@
   </a>
 
   <nav class="links">
-    <div class="nav-item">
-      <a routerLink="/tienda/productos" aria-haspopup="true">
+    <div class="nav-item" [class.abierto]="menuAbierto()">
+      <a routerLink="/tienda/productos" aria-haspopup="true" [attr.aria-expanded]="menuAbierto()"
+        (click)="cerrarMenu()">
         Productos
         <span class="caret" aria-hidden="true"></span>
       </a>
       <ul class="submenu">
         <li>
-          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'alimentos' }">
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'alimentos' }" (click)="cerrarMenu()">
             Alimentos
           </a>
         </li>
         <li>
-          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'juguetes' }">
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'juguetes' }" (click)="cerrarMenu()">
             Juguetes
           </a>
         </li>
         <li>
-          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'ropa' }">Ropa</a>
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'ropa' }" (click)="cerrarMenu()">Ropa</a>
         </li>
         <li>
-          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'accesorios' }">
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'accesorios' }" (click)="cerrarMenu()">
             Accesorios
           </a>
         </li>
         <li>
-          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'higiene' }">
+          <a routerLink="/tienda/productos" [queryParams]="{ categoria: 'higiene' }" (click)="cerrarMenu()">
             Higiene
           </a>
         </li>
