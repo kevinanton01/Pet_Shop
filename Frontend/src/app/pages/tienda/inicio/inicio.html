@@ -100,7 +100,7 @@
 <section class="best-sellers">
   <h2 class="section-title">Más vendidos</h2>
   <div class="products-grid">
-    @for (producto of masVendidos; track producto.nombre) {
+    @for (producto of masVendidos(); track producto.nombre) {
     <app-card-alimento [nombre]="producto.nombre" [precio]="producto.precio" [imagen]="producto.imagen"
       [descripcion]="producto.descripcion" [categoria]="producto.categoria"
       (verDetalle)="verDetalle(producto)" />

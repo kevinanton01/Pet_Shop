@@ -168,7 +168,6 @@
   color: #1f5c39;
 }
 
-.icon,
 .cart {
   display: inline-flex;
   align-items: center;
@@ -181,7 +180,6 @@
   transition: color 0.2s ease;
 }
 
-.icon:hover,
 .cart:hover,
 .cart.active {
   color: #5c421f;

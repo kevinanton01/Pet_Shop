@@ -7,6 +7,7 @@ export interface Producto {
   descripcion: string;
   categoria: string;
   filtros: string[];
+  cant_vendidos: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,6 +20,7 @@ export class ProductosService {
       descripcion: 'Nutrición completa y balanceada para perros adultos.',
       categoria: 'Perros',
       filtros: ['alimentos', 'perros'],
+      cant_vendidos: 320,
     },
     {
       nombre: 'Alimento Húmedo',
@@ -27,6 +29,7 @@ export class ProductosService {
       descripcion: 'Textura suave y sabrosa, fácil de digerir.',
       categoria: 'Gatos',
       filtros: ['alimentos', 'gatos'],
+      cant_vendidos: 210,
     },
     {
       nombre: 'Snacks Naturales',
@@ -35,6 +38,7 @@ export class ProductosService {
       descripcion: 'Bocaditos saludables para premiar a tu mascota.',
       categoria: 'Perros',
       filtros: ['alimentos', 'perros'],
+      cant_vendidos: 185,
     },
     {
       nombre: 'Comida para Cachorros',
@@ -43,6 +47,7 @@ export class ProductosService {
       descripcion: 'Fórmula especial para acompañar su crecimiento.',
       categoria: 'Perros',
       filtros: ['alimentos', 'perros'],
+      cant_vendidos: 140,
     },
     {
       nombre: 'Dieta Light',
@@ -51,6 +56,7 @@ export class ProductosService {
       descripcion: 'Balance ideal para mantener un peso saludable.',
       categoria: 'Perros',
       filtros: ['alimentos', 'perros'],
+      cant_vendidos: 95,
     },
     {
       nombre: 'Mezcla para Aves',
@@ -59,6 +65,7 @@ export class ProductosService {
       descripcion: 'Semillas seleccionadas para una alimentación completa.',
       categoria: 'Aves',
       filtros: ['alimentos', 'aves'],
+      cant_vendidos: 60,
     },
     {
       nombre: 'Alimento para Conejos',
@@ -67,6 +74,7 @@ export class ProductosService {
       descripcion: 'Nutrientes esenciales para mascotas pequeñas.',
       categoria: 'Otros',
       filtros: ['alimentos', 'otros'],
+      cant_vendidos: 45,
     },
     {
       nombre: 'Juguete Mordedor',
@@ -75,6 +83,7 @@ export class ProductosService {
       descripcion: 'Resistente y divertido, ideal para el juego diario.',
       categoria: 'Juguetes',
       filtros: ['juguetes'],
+      cant_vendidos: 230,
     },
     {
       nombre: 'Ropa Impermeable',
@@ -83,6 +92,7 @@ export class ProductosService {
       descripcion: 'Abrigo liviano para pasear los días de lluvia.',
       categoria: 'Ropa',
       filtros: ['ropa'],
+      cant_vendidos: 70,
     },
     {
       nombre: 'Shampoo Suave',
@@ -91,6 +101,7 @@ export class ProductosService {
       descripcion: 'Limpieza delicada que cuida la piel y el pelaje.',
       categoria: 'Higiene',
       filtros: ['higiene', 'shampoo'],
+      cant_vendidos: 110,
     },
     {
       nombre: 'Perfume Fresco',
@@ -99,6 +110,7 @@ export class ProductosService {
       descripcion: 'Aroma duradero y suave para después del baño.',
       categoria: 'Higiene',
       filtros: ['higiene', 'perfumes'],
+      cant_vendidos: 80,
     },
     {
       nombre: 'Camita Acolchada',
@@ -107,6 +119,7 @@ export class ProductosService {
       descripcion: 'Confort y abrigo para que descansen como se merecen.',
       categoria: 'Accesorios',
       filtros: ['accesorios'],
+      cant_vendidos: 150,
     },
   ];
 
