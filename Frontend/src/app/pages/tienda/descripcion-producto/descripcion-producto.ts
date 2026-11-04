@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
@@ -20,6 +20,16 @@ export class DescripcionProducto {
   );
 
   readonly producto = computed(() => this.productosService.obtenerPorNombre(this.nombre()));
+
+  readonly cantidad = signal(1);
+
+  sumarCantidad(): void {
+    this.cantidad.update((cantidad) => cantidad + 1);
+  }
+
+  restarCantidad(): void {
+    this.cantidad.update((cantidad) => Math.max(1, cantidad - 1));
+  }
 
   formatearPrecio(valor: number): string {
     return new Intl.NumberFormat('es-AR', {

@@ -1,5 +1,7 @@
-import { Component, HostListener, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, HostListener, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter, map } from 'rxjs';
 import { CarritoVistaPrevia } from '../carrito-vista-previa/carrito-vista-previa';
 
 @Component({
@@ -9,8 +11,18 @@ import { CarritoVistaPrevia } from '../carrito-vista-previa/carrito-vista-previa
   styleUrl: './navbar.css',
 })
 export class Navbar {
+  private readonly router = inject(Router);
+
   readonly carritoAbierto = signal(false);
   readonly menuAbierto = signal(false);
+
+  readonly enCarrito = toSignal(
+    this.router.events.pipe(
+      filter((evento): evento is NavigationEnd => evento instanceof NavigationEnd),
+      map((evento) => evento.urlAfterRedirects.startsWith('/tienda/carrito')),
+    ),
+    { initialValue: this.router.url.startsWith('/tienda/carrito') },
+  );
 
   alternarCarrito(): void {
     this.carritoAbierto.update((abierto) => !abierto);

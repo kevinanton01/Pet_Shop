@@ -6,8 +6,9 @@ export interface Producto {
   imagen: string;
   descripcion: string;
   categoria: string;
-  filtros: string[];
   cant_vendidos: number;
+  peso?: string;
+  descuento?: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,8 +20,9 @@ export class ProductosService {
       imagen: 'assets/alimento-1.jpg',
       descripcion: 'Nutrición completa y balanceada para perros adultos.',
       categoria: 'Perros',
-      filtros: ['alimentos', 'perros'],
       cant_vendidos: 320,
+      peso: '15 kg',
+      descuento: 10,
     },
     {
       nombre: 'Alimento Húmedo',
@@ -28,8 +30,8 @@ export class ProductosService {
       imagen: 'assets/alimento-2.jpg',
       descripcion: 'Textura suave y sabrosa, fácil de digerir.',
       categoria: 'Gatos',
-      filtros: ['alimentos', 'gatos'],
       cant_vendidos: 210,
+      peso: '340 g',
     },
     {
       nombre: 'Snacks Naturales',
@@ -37,8 +39,8 @@ export class ProductosService {
       imagen: 'assets/alimento-3.jpg',
       descripcion: 'Bocaditos saludables para premiar a tu mascota.',
       categoria: 'Perros',
-      filtros: ['alimentos', 'perros'],
       cant_vendidos: 185,
+      peso: '500 g',
     },
     {
       nombre: 'Comida para Cachorros',
@@ -46,8 +48,9 @@ export class ProductosService {
       imagen: 'assets/alimento-4.jpg',
       descripcion: 'Fórmula especial para acompañar su crecimiento.',
       categoria: 'Perros',
-      filtros: ['alimentos', 'perros'],
       cant_vendidos: 140,
+      peso: '10 kg',
+      descuento: 15,
     },
     {
       nombre: 'Dieta Light',
@@ -55,8 +58,8 @@ export class ProductosService {
       imagen: 'assets/alimento-5.jpg',
       descripcion: 'Balance ideal para mantener un peso saludable.',
       categoria: 'Perros',
-      filtros: ['alimentos', 'perros'],
       cant_vendidos: 95,
+      peso: '12 kg',
     },
     {
       nombre: 'Mezcla para Aves',
@@ -64,8 +67,8 @@ export class ProductosService {
       imagen: 'assets/alimento-3.jpg',
       descripcion: 'Semillas seleccionadas para una alimentación completa.',
       categoria: 'Aves',
-      filtros: ['alimentos', 'aves'],
       cant_vendidos: 60,
+      peso: '1 kg',
     },
     {
       nombre: 'Alimento para Conejos',
@@ -73,8 +76,8 @@ export class ProductosService {
       imagen: 'assets/alimento-1.jpg',
       descripcion: 'Nutrientes esenciales para mascotas pequeñas.',
       categoria: 'Otros',
-      filtros: ['alimentos', 'otros'],
       cant_vendidos: 45,
+      peso: '2 kg',
     },
     {
       nombre: 'Juguete Mordedor',
@@ -82,7 +85,6 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Resistente y divertido, ideal para el juego diario.',
       categoria: 'Juguetes',
-      filtros: ['juguetes'],
       cant_vendidos: 230,
     },
     {
@@ -91,7 +93,6 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Abrigo liviano para pasear los días de lluvia.',
       categoria: 'Ropa',
-      filtros: ['ropa'],
       cant_vendidos: 70,
     },
     {
@@ -99,18 +100,19 @@ export class ProductosService {
       precio: 3800,
       imagen: 'assets/mascota.jpg',
       descripcion: 'Limpieza delicada que cuida la piel y el pelaje.',
-      categoria: 'Higiene',
-      filtros: ['higiene', 'shampoo'],
+      categoria: 'Shampoo',
       cant_vendidos: 110,
+      peso: '500 ml',
+      descuento: 20,
     },
     {
       nombre: 'Perfume Fresco',
       precio: 4200,
       imagen: 'assets/mascota.jpg',
       descripcion: 'Aroma duradero y suave para después del baño.',
-      categoria: 'Higiene',
-      filtros: ['higiene', 'perfumes'],
+      categoria: 'Perfumes',
       cant_vendidos: 80,
+      peso: '250 ml',
     },
     {
       nombre: 'Camita Acolchada',
@@ -118,7 +120,6 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Confort y abrigo para que descansen como se merecen.',
       categoria: 'Accesorios',
-      filtros: ['accesorios'],
       cant_vendidos: 150,
     },
   ];

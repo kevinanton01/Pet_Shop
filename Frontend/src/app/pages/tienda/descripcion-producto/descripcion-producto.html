@@ -10,8 +10,29 @@
 
     <div class="detalle-info">
       <h1 class="detalle-titulo">{{ producto.nombre }}</h1>
-      <p class="detalle-precio">{{ formatearPrecio(producto.precio) }}</p>
+
+      <div class="detalle-precio-fila">
+        <p class="detalle-precio">{{ formatearPrecio(producto.precio) }}</p>
+        @if (producto.descuento) {
+        <span class="detalle-descuento">{{ producto.descuento }}% OFF</span>
+        }
+      </div>
+
+      @if (producto.peso) {
+      <p class="detalle-peso"><strong>Peso:</strong> {{ producto.peso }}</p>
+      }
+
       <p class="detalle-descripcion">{{ producto.descripcion }}</p>
+
+      <div class="detalle-cantidad">
+        <span class="cantidad-label">Cantidad:</span>
+        <div class="stepper">
+          <button type="button" class="stepper-btn" aria-label="Restar cantidad" [disabled]="cantidad() === 1"
+            (click)="restarCantidad()">−</button>
+          <span class="stepper-valor">{{ cantidad() }}</span>
+          <button type="button" class="stepper-btn" aria-label="Sumar cantidad" (click)="sumarCantidad()">+</button>
+        </div>
+      </div>
 
       <button type="button" class="detalle-btn">Agregar al carrito</button>
     </div>

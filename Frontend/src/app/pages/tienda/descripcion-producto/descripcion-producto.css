@@ -67,12 +67,86 @@
   color: #1f4a34;
 }
 
+.detalle-precio-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .detalle-precio {
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--color-primary-deep);
+}
+
+.detalle-descuento {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #d9873f;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.detalle-peso {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.detalle-peso strong {
+  color: #1f4a34;
+}
+
+.detalle-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cantidad-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f4a34;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stepper-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  background: #f7e3cf;
+  color: #1f4a34;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.stepper-btn:hover:not(:disabled) {
+  background: #efd0b1;
+}
+
+.stepper-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.stepper-valor {
+  min-width: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-text);
 }
 
 .detalle-descripcion {

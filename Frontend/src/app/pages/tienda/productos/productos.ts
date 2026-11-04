@@ -35,6 +35,20 @@ export class Productos {
     higiene: ['shampoo', 'perfumes'],
   };
 
+  private readonly categoriasPorFiltro: Record<string, readonly string[]> = {
+    alimentos: ['Perros', 'Gatos', 'Aves', 'Otros'],
+    perros: ['Perros'],
+    gatos: ['Gatos'],
+    aves: ['Aves'],
+    otros: ['Otros'],
+    juguetes: ['Juguetes'],
+    ropa: ['Ropa'],
+    accesorios: ['Accesorios'],
+    higiene: ['Shampoo', 'Perfumes'],
+    shampoo: ['Shampoo'],
+    perfumes: ['Perfumes'],
+  };
+
   private padreDe(valor: string): string | undefined {
     return Object.keys(this.hijosPorPadre).find((padre) =>
       this.hijosPorPadre[padre].includes(valor),
@@ -45,11 +59,19 @@ export class Productos {
     const seleccion = this.seleccionadas();
     const termino = this.normalizar(this.busqueda().trim());
 
+    const categorias = new Set<string>();
+
+    seleccion.forEach((filtro) => {
+      this.categoriasPorFiltro[filtro]?.forEach((categoria) =>
+        categorias.add(this.normalizar(categoria)),
+      );
+    });
+
     let resultado = this.productos;
 
-    if (seleccion.size > 0) {
+    if (categorias.size > 0) {
       resultado = resultado.filter((producto) =>
-        producto.filtros.some((filtro) => seleccion.has(filtro)),
+        categorias.has(this.normalizar(producto.categoria)),
       );
     }
 
