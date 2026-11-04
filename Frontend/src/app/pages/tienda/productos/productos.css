@@ -12,6 +12,33 @@
   min-width: 0;
 }
 
+.buscador {
+  margin-bottom: 1.25rem;
+}
+
+.buscador input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buscador input::placeholder {
+  color: var(--color-muted);
+}
+
+.buscador input:focus {
+  border-color: #d9873f;
+  box-shadow: 0 0 0 3px rgba(217, 135, 63, 0.18);
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

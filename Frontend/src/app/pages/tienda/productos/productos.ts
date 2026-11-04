@@ -1,4 +1,4 @@
-import { Component, computed, inject, linkedSignal } from '@angular/core';
+import { Component, computed, inject, linkedSignal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -28,6 +28,8 @@ export class Productos {
 
   readonly productos = this.productosService.productos;
 
+  readonly busqueda = signal('');
+
   private readonly hijosPorPadre: Record<string, readonly string[]> = {
     alimentos: ['perros', 'gatos', 'aves', 'otros'],
     higiene: ['shampoo', 'perfumes'],
@@ -41,15 +43,35 @@ export class Productos {
 
   readonly productosFiltrados = computed(() => {
     const seleccion = this.seleccionadas();
+    const termino = this.normalizar(this.busqueda().trim());
 
-    if (seleccion.size === 0) {
-      return this.productos;
+    let resultado = this.productos;
+
+    if (seleccion.size > 0) {
+      resultado = resultado.filter((producto) =>
+        producto.filtros.some((filtro) => seleccion.has(filtro)),
+      );
     }
 
-    return this.productos.filter((producto) =>
-      producto.filtros.some((filtro) => seleccion.has(filtro)),
-    );
+    if (termino) {
+      resultado = resultado.filter((producto) =>
+        this.normalizar(producto.nombre).includes(termino),
+      );
+    }
+
+    return resultado;
   });
+
+  actualizarBusqueda(event: Event): void {
+    this.busqueda.set((event.target as HTMLInputElement).value);
+  }
+
+  private normalizar(texto: string): string {
+    return texto
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, ''); //Elimina las marcas diacríticas mediante una expresión regular.
+  }
 
   estaSeleccionada(valor: string): boolean {
     return this.seleccionadas().has(valor);

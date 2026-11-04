@@ -80,6 +80,11 @@
   </aside>
 
   <div class="catalogo">
+    <div class="buscador">
+      <input type="search" placeholder="Buscar producto por nombre..." aria-label="Buscar producto"
+        [value]="busqueda()" (input)="actualizarBusqueda($event)" />
+    </div>
+
     <div class="products-grid">
       @for (producto of productosFiltrados(); track producto.nombre) {
         <app-card-alimento
@@ -91,7 +96,7 @@
           (verDetalle)="verDetalle(producto)"
         />
       } @empty {
-        <p class="sin-resultados">No hay productos para las categorías seleccionadas.</p>
+        <p class="sin-resultados">No hay productos que coincidan con la búsqueda o categorías seleccionadas.</p>
       }
     </div>
   </div>
