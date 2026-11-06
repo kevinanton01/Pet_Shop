@@ -15,9 +15,7 @@ export class Inicio {
   private readonly productosService = inject(ProductosService);
 
   readonly masVendidos = computed(() =>
-    [...this.productosService.productos]
-      .sort((a, b) => b.cant_vendidos - a.cant_vendidos)
-      .slice(0, 5),
+    this.productosService.productos.filter((producto) => producto.mas_vendidos),
   );
 
   verDetalle(producto: Producto): void {

@@ -6,7 +6,7 @@ export interface Producto {
   imagen: string;
   descripcion: string;
   categoria: string;
-  cant_vendidos: number;
+  mas_vendidos: boolean;
   peso?: string;
   descuento?: number;
 }
@@ -20,7 +20,7 @@ export class ProductosService {
       imagen: 'assets/alimento-1.jpg',
       descripcion: 'Nutrición completa y balanceada para perros adultos.',
       categoria: 'Perros',
-      cant_vendidos: 320,
+      mas_vendidos: true,
       peso: '15 kg',
       descuento: 10,
     },
@@ -30,7 +30,7 @@ export class ProductosService {
       imagen: 'assets/alimento-2.jpg',
       descripcion: 'Textura suave y sabrosa, fácil de digerir.',
       categoria: 'Gatos',
-      cant_vendidos: 210,
+      mas_vendidos: true,
       peso: '340 g',
     },
     {
@@ -39,7 +39,7 @@ export class ProductosService {
       imagen: 'assets/alimento-3.jpg',
       descripcion: 'Bocaditos saludables para premiar a tu mascota.',
       categoria: 'Perros',
-      cant_vendidos: 185,
+      mas_vendidos: true,
       peso: '500 g',
     },
     {
@@ -48,7 +48,7 @@ export class ProductosService {
       imagen: 'assets/alimento-4.jpg',
       descripcion: 'Fórmula especial para acompañar su crecimiento.',
       categoria: 'Perros',
-      cant_vendidos: 140,
+      mas_vendidos: true,
       peso: '10 kg',
       descuento: 15,
     },
@@ -58,7 +58,7 @@ export class ProductosService {
       imagen: 'assets/alimento-5.jpg',
       descripcion: 'Balance ideal para mantener un peso saludable.',
       categoria: 'Perros',
-      cant_vendidos: 95,
+      mas_vendidos: false,
       peso: '12 kg',
     },
     {
@@ -67,7 +67,7 @@ export class ProductosService {
       imagen: 'assets/alimento-3.jpg',
       descripcion: 'Semillas seleccionadas para una alimentación completa.',
       categoria: 'Aves',
-      cant_vendidos: 60,
+      mas_vendidos: false,
       peso: '1 kg',
     },
     {
@@ -76,7 +76,7 @@ export class ProductosService {
       imagen: 'assets/alimento-1.jpg',
       descripcion: 'Nutrientes esenciales para mascotas pequeñas.',
       categoria: 'Otros',
-      cant_vendidos: 45,
+      mas_vendidos: false,
       peso: '2 kg',
     },
     {
@@ -85,7 +85,7 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Resistente y divertido, ideal para el juego diario.',
       categoria: 'Juguetes',
-      cant_vendidos: 230,
+      mas_vendidos: true,
     },
     {
       nombre: 'Ropa Impermeable',
@@ -93,7 +93,7 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Abrigo liviano para pasear los días de lluvia.',
       categoria: 'Ropa',
-      cant_vendidos: 70,
+      mas_vendidos: false,
     },
     {
       nombre: 'Shampoo Suave',
@@ -101,7 +101,7 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Limpieza delicada que cuida la piel y el pelaje.',
       categoria: 'Shampoo',
-      cant_vendidos: 110,
+      mas_vendidos: false,
       peso: '500 ml',
       descuento: 20,
     },
@@ -111,7 +111,7 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Aroma duradero y suave para después del baño.',
       categoria: 'Perfumes',
-      cant_vendidos: 80,
+      mas_vendidos: false,
       peso: '250 ml',
     },
     {
@@ -120,7 +120,7 @@ export class ProductosService {
       imagen: 'assets/mascota.jpg',
       descripcion: 'Confort y abrigo para que descansen como se merecen.',
       categoria: 'Accesorios',
-      cant_vendidos: 150,
+      mas_vendidos: false,
     },
   ];
 
