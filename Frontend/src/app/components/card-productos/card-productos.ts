@@ -12,6 +12,7 @@ export class CardProductos {
   readonly descripcion = input<string>('');
   readonly categoria = input<string>('Alimento');
   readonly descuento = input<number | undefined>();
+  readonly stock = input<boolean>(true);
 
   readonly agregar = output<void>();
   readonly verDetalle = output<void>();

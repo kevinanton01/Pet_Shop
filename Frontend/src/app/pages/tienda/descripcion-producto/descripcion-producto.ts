@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
@@ -22,6 +22,16 @@ export class DescripcionProducto {
   readonly producto = computed(() => this.productosService.obtenerPorNombre(this.nombre()));
 
   readonly cantidad = signal(1);
+  readonly imagenAmpliada = signal(false);
+
+  abrirImagen(): void {
+    this.imagenAmpliada.set(true);
+  }
+
+  @HostListener('document:keydown.escape')
+  cerrarImagen(): void {
+    this.imagenAmpliada.set(false);
+  }
 
   sumarCantidad(): void {
     this.cantidad.update((cantidad) => cantidad + 1);

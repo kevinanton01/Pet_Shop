@@ -1,9 +1,20 @@
-<article class="card" role="link" tabindex="0" (click)="verDetalle.emit()" (keydown.enter)="verDetalle.emit()">
+<article class="card" [class.sin-stock]="!stock()" role="link" tabindex="0" (click)="verDetalle.emit()" (keydown.enter)="verDetalle.emit()">
   <div class="card-media">
     <img [src]="imagen()" [alt]="nombre()" loading="lazy" />
     <span class="card-badge">{{ categoria() }}</span>
     @if (descuento()) {
     <span class="card-descuento">{{ descuento() }}% OFF</span>
+    }
+    @if (!stock()) {
+    <span class="card-sin-stock">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 8v5" />
+        <path d="M12 16.5h.01" />
+      </svg>
+      Sin stock
+    </span>
     }
   </div>
 
@@ -16,7 +27,7 @@
 
     <div class="card-footer">
       <span class="card-price">${{ precio() }}</span>
-      <button type="button" class="card-btn" (click)="$event.stopPropagation(); agregar.emit()">Agregar</button>
+      <button type="button" class="card-btn" [disabled]="!stock()" (click)="$event.stopPropagation(); agregar.emit()">Agregar</button>
     </div>
   </div>
 </article>

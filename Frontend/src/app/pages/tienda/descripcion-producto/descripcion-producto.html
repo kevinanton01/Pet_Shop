@@ -3,13 +3,27 @@
 
   @if (producto(); as producto) {
   <article class="detalle-card">
-    <div class="detalle-media">
+    <div class="detalle-media" role="button" tabindex="0" aria-label="Ver imagen completa"
+      (click)="abrirImagen()" (keydown.enter)="abrirImagen()"
+      (keydown.space)="$event.preventDefault(); abrirImagen()">
       <img [src]="producto.imagen" [alt]="producto.nombre" />
       <span class="detalle-badge">{{ producto.categoria }}</span>
     </div>
 
     <div class="detalle-info">
       <h1 class="detalle-titulo">{{ producto.nombre }}</h1>
+
+      @if (!producto.stock) {
+      <div class="detalle-sin-stock" role="status">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 8v5" />
+          <path d="M12 16.5h.01" />
+        </svg>
+        <span>Sin stock</span>
+      </div>
+      }
 
       <div class="detalle-precio-fila">
         <p class="detalle-precio">{{ formatearPrecio(producto.precio) }}</p>
@@ -34,9 +48,17 @@
         </div>
       </div>
 
-      <button type="button" class="detalle-btn">Agregar al carrito</button>
+      <button type="button" class="detalle-btn" [disabled]="!producto.stock">Agregar al carrito</button>
     </div>
   </article>
+
+  @if (imagenAmpliada()) {
+  <div class="imagen-overlay" role="dialog" aria-modal="true" [attr.aria-label]="producto.nombre"
+    (click)="cerrarImagen()">
+    <button type="button" class="imagen-cerrar" aria-label="Cerrar imagen" (click)="cerrarImagen()">×</button>
+    <img [src]="producto.imagen" [alt]="producto.nombre" (click)="$event.stopPropagation()" />
+  </div>
+  }
   } @else {
   <div class="no-encontrado">
     <h1>Producto no encontrado</h1>

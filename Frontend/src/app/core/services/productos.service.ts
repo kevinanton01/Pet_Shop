@@ -7,6 +7,7 @@ export interface Producto {
   descripcion: string;
   categoria: string;
   mas_vendidos: boolean;
+  stock: boolean;
   peso?: string;
   descuento?: number;
 }
@@ -21,6 +22,7 @@ export class ProductosService {
       descripcion: 'Nutrición completa y balanceada para perros adultos.',
       categoria: 'Perros',
       mas_vendidos: true,
+      stock: true,
       peso: '15 kg',
       descuento: 10,
     },
@@ -31,6 +33,7 @@ export class ProductosService {
       descripcion: 'Textura suave y sabrosa, fácil de digerir.',
       categoria: 'Gatos',
       mas_vendidos: true,
+      stock: true,
       peso: '340 g',
     },
     {
@@ -40,6 +43,7 @@ export class ProductosService {
       descripcion: 'Bocaditos saludables para premiar a tu mascota.',
       categoria: 'Perros',
       mas_vendidos: true,
+      stock: true,
       peso: '500 g',
     },
     {
@@ -49,6 +53,7 @@ export class ProductosService {
       descripcion: 'Fórmula especial para acompañar su crecimiento.',
       categoria: 'Perros',
       mas_vendidos: true,
+      stock: true,
       peso: '10 kg',
       descuento: 15,
     },
@@ -59,6 +64,7 @@ export class ProductosService {
       descripcion: 'Balance ideal para mantener un peso saludable.',
       categoria: 'Perros',
       mas_vendidos: false,
+      stock: false,
       peso: '12 kg',
     },
     {
@@ -68,6 +74,7 @@ export class ProductosService {
       descripcion: 'Semillas seleccionadas para una alimentación completa.',
       categoria: 'Aves',
       mas_vendidos: false,
+      stock: true,
       peso: '1 kg',
     },
     {
@@ -77,6 +84,7 @@ export class ProductosService {
       descripcion: 'Nutrientes esenciales para mascotas pequeñas.',
       categoria: 'Otros',
       mas_vendidos: false,
+      stock: true,
       peso: '2 kg',
     },
     {
@@ -86,6 +94,7 @@ export class ProductosService {
       descripcion: 'Resistente y divertido, ideal para el juego diario.',
       categoria: 'Juguetes',
       mas_vendidos: true,
+      stock: true,
     },
     {
       nombre: 'Ropa Impermeable',
@@ -94,6 +103,7 @@ export class ProductosService {
       descripcion: 'Abrigo liviano para pasear los días de lluvia.',
       categoria: 'Ropa',
       mas_vendidos: false,
+      stock: false,
     },
     {
       nombre: 'Shampoo Suave',
@@ -102,6 +112,7 @@ export class ProductosService {
       descripcion: 'Limpieza delicada que cuida la piel y el pelaje.',
       categoria: 'Shampoo',
       mas_vendidos: false,
+      stock: true,
       peso: '500 ml',
       descuento: 20,
     },
@@ -112,6 +123,7 @@ export class ProductosService {
       descripcion: 'Aroma duradero y suave para después del baño.',
       categoria: 'Perfumes',
       mas_vendidos: false,
+      stock: false,
       peso: '250 ml',
     },
     {
@@ -121,6 +133,7 @@ export class ProductosService {
       descripcion: 'Confort y abrigo para que descansen como se merecen.',
       categoria: 'Accesorios',
       mas_vendidos: false,
+      stock: true,
     },
   ];
 
