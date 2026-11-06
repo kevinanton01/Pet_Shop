@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { CardProductos } from '../../../components/card-productos/card-productos';
+import { CarritoService } from '../../../core/services/carrito.service';
 import { Producto, ProductosService } from '../../../core/services/productos.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class Productos {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly productosService = inject(ProductosService);
+  private readonly carritoService = inject(CarritoService);
 
   private readonly categoriaActiva = toSignal(
     this.route.queryParamMap.pipe(map((params) => params.get('categoria'))),
@@ -101,6 +103,10 @@ export class Productos {
 
   verDetalle(producto: Producto): void {
     this.router.navigate(['/tienda/descripcion-producto', producto.nombre]);
+  }
+
+  agregar(producto: Producto): void {
+    this.carritoService.agregar(producto);
   }
 
   alternar(valor: string, event: Event): void {

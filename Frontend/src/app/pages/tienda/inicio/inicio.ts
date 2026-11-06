@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CardProductos } from '../../../components/card-productos/card-productos';
 import { CardCategorias } from '../../../components/card-categorias/card-categorias';
+import { CarritoService } from '../../../core/services/carrito.service';
 import { Producto, ProductosService } from '../../../core/services/productos.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { Producto, ProductosService } from '../../../core/services/productos.ser
 export class Inicio {
   private readonly router = inject(Router);
   private readonly productosService = inject(ProductosService);
+  private readonly carritoService = inject(CarritoService);
 
   readonly masVendidos = computed(() =>
     this.productosService.productos.filter((producto) => producto.mas_vendidos),
@@ -20,5 +22,9 @@ export class Inicio {
 
   verDetalle(producto: Producto): void {
     this.router.navigate(['/tienda/descripcion-producto', producto.nombre]);
+  }
+
+  agregar(producto: Producto): void {
+    this.carritoService.agregar(producto);
   }
 }

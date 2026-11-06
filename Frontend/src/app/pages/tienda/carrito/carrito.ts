@@ -1,10 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { Producto, ProductosService } from '../../../core/services/productos.service';
-
-interface ItemCarrito {
-  producto: Producto;
-  cantidad: number;
-}
+import { Component, inject, signal } from '@angular/core';
+import { CarritoService } from '../../../core/services/carrito.service';
 
 interface PuntoEncuentro {
   nombre: string;
@@ -19,12 +14,9 @@ type TipoEntrega = 'domicilio' | 'retiro' | 'punto';
   styleUrl: './carrito.css',
 })
 export class Carrito {
-  private readonly productosService = inject(ProductosService);
+  private readonly carritoService = inject(CarritoService);
 
-  readonly items = signal<ItemCarrito[]>([
-    { producto: this.productosService.obtenerPorNombre('Croquetas Premium')!, cantidad: 1 },
-    { producto: this.productosService.obtenerPorNombre('Snacks Naturales')!, cantidad: 2 },
-  ]);
+  readonly items = this.carritoService.items;
 
   readonly entrega = signal<TipoEntrega>('domicilio');
   readonly nota = signal('');
@@ -37,31 +29,18 @@ export class Carrito {
     { nombre: 'Shell', direccion: 'Av. San Martín 4199, Lanús' },
   ];
 
-  readonly total = computed(() =>
-    this.items().reduce(
-      (acumulado, item) => acumulado + item.producto.precio * item.cantidad,
-      0,
-    ),
-  );
+  readonly total = this.carritoService.subtotal;
 
   sumar(nombre: string): void {
-    this.items.update((items) =>
-      items.map((item) =>
-        item.producto.nombre === nombre
-          ? { ...item, cantidad: item.cantidad + 1 }
-          : item,
-      ),
-    );
+    this.carritoService.sumar(nombre);
   }
 
   restar(nombre: string): void {
-    this.items.update((items) =>
-      items.map((item) =>
-        item.producto.nombre === nombre
-          ? { ...item, cantidad: Math.max(1, item.cantidad - 1) }
-          : item,
-      ),
-    );
+    this.carritoService.restar(nombre);
+  }
+
+  quitar(nombre: string): void {
+    this.carritoService.quitar(nombre);
   }
 
   cambiarEntrega(tipo: TipoEntrega): void {

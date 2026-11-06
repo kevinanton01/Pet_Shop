@@ -2,6 +2,7 @@ import { Component, HostListener, computed, inject, signal } from '@angular/core
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { CarritoService } from '../../../core/services/carrito.service';
 import { ProductosService } from '../../../core/services/productos.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { ProductosService } from '../../../core/services/productos.service';
 export class DescripcionProducto {
   private readonly route = inject(ActivatedRoute);
   private readonly productosService = inject(ProductosService);
+  private readonly carritoService = inject(CarritoService);
 
   private readonly nombre = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('nombre') ?? '')),
@@ -39,6 +41,17 @@ export class DescripcionProducto {
 
   restarCantidad(): void {
     this.cantidad.update((cantidad) => Math.max(1, cantidad - 1));
+  }
+
+  agregarAlCarrito(): void {
+    const producto = this.producto();
+
+    if (!producto || !producto.stock) {
+      return;
+    }
+
+    this.carritoService.agregar(producto, this.cantidad());
+    this.cantidad.set(1);
   }
 
   formatearPrecio(valor: number): string {

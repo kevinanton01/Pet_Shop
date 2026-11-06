@@ -22,7 +22,7 @@ export class ProductosService {
       descripcion: 'Nutrición completa y balanceada para perros adultos.',
       categoria: 'Perros',
       mas_vendidos: true,
-      stock: true,
+      stock: false,
       peso: '15 kg',
       descuento: 10,
     },
@@ -64,7 +64,7 @@ export class ProductosService {
       descripcion: 'Balance ideal para mantener un peso saludable.',
       categoria: 'Perros',
       mas_vendidos: false,
-      stock: false,
+      stock: true,
       peso: '12 kg',
     },
     {

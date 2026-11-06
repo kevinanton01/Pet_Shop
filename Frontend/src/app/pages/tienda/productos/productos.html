@@ -95,6 +95,7 @@
           [categoria]="producto.categoria"
           [descuento]="producto.descuento"
           [stock]="producto.stock"
+          (agregar)="agregar(producto)"
           (verDetalle)="verDetalle(producto)"
         />
       } @empty {

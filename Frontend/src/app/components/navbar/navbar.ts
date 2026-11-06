@@ -2,6 +2,7 @@ import { Component, HostListener, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter, map } from 'rxjs';
+import { CarritoService } from '../../core/services/carrito.service';
 import { CarritoVistaPrevia } from '../carrito-vista-previa/carrito-vista-previa';
 
 @Component({
@@ -12,6 +13,9 @@ import { CarritoVistaPrevia } from '../carrito-vista-previa/carrito-vista-previa
 })
 export class Navbar {
   private readonly router = inject(Router);
+  private readonly carritoService = inject(CarritoService);
+
+  readonly cantidadTotal = this.carritoService.cantidadTotal;
 
   readonly carritoAbierto = signal(false);
   readonly menuAbierto = signal(false);

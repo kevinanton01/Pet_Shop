@@ -1,5 +1,6 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CarritoService } from '../../core/services/carrito.service';
 
 export interface ItemVistaPrevia {
   nombre: string;
@@ -15,30 +16,22 @@ export interface ItemVistaPrevia {
   styleUrl: './carrito-vista-previa.css',
 })
 export class CarritoVistaPrevia {
+  private readonly carritoService = inject(CarritoService);
+
   readonly abierto = input(false);
-  readonly items = input<ItemVistaPrevia[]>([
-    {
-      nombre: 'Croquetas Premium',
-      precio: 12500,
-      cantidad: 1,
-      imagen: 'assets/alimento-1.jpg',
-    },
-    {
-      nombre: 'Snacks Naturales',
-      precio: 2800,
-      cantidad: 2,
-      imagen: 'assets/alimento-3.jpg',
-    },
-  ]);
   readonly cerrar = output<void>();
 
-  readonly cantidadTotal = computed(() =>
-    this.items().reduce((total, item) => total + item.cantidad, 0),
+  readonly items = computed<ItemVistaPrevia[]>(() =>
+    this.carritoService.items().map(({ producto, cantidad }) => ({
+      nombre: producto.nombre,
+      precio: producto.precio,
+      cantidad,
+      imagen: producto.imagen,
+    })),
   );
 
-  readonly subtotal = computed(() =>
-    this.items().reduce((total, item) => total + item.precio * item.cantidad, 0),
-  );
+  readonly cantidadTotal = this.carritoService.cantidadTotal;
+  readonly subtotal = this.carritoService.subtotal;
 
   readonly tieneEnvioGratis = computed(() => this.subtotal() >= 20000);
 

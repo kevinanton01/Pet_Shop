@@ -48,7 +48,8 @@
         </div>
       </div>
 
-      <button type="button" class="detalle-btn" [disabled]="!producto.stock">Agregar al carrito</button>
+      <button type="button" class="detalle-btn" [disabled]="!producto.stock"
+        (click)="agregarAlCarrito()">Agregar al carrito</button>
     </div>
   </article>
 
